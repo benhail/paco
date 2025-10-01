@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
+import 'package:paco/app.dart';
+import 'package:paco/data/local/db.dart';
+import 'package:paco/features/tasks/data/tasks_repository.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final db = AppDatabase();
+  TasksRepository.init(db); // 👈 síncrono (ver cambio abajo)
   runApp(const PacoApp());
 }
